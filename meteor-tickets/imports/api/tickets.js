@@ -43,7 +43,7 @@ Meteor.methods({
         createdAt: new Date(),
         owner: this.userId,
         username: Meteor.users.findOne(this.userId).username,
-        responses:"",
+
       });
     },
     'tickets.remove'(ticketId) {
@@ -53,7 +53,7 @@ Meteor.methods({
     },
     'tickets.addResponse'(ticketId, response) {
       check(ticketId, String);
-   
-      Tickets.update(ticketId, {$set:  { responses: response } });
+
+      Tickets.update(ticketId, {$push:  { responses: response } });
     },
   });

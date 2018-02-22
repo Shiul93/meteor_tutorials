@@ -57,15 +57,36 @@ body {
    
   .new-ticket input {
     box-sizing: border-box;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
     padding: 10px 0;
-    background: transparent;
+    background: whitesmoke;
     border: none;
     width: 100%;
     padding-right: 80px;
     font-size: 1em;
+    border-radius: 15px;
+    text-indent: 5%;
   }
    
   .new-ticket input:focus{
+    outline: 0;
+  }
+
+  .new-response input {
+    box-sizing: border-box;
+    padding: 10px 0;
+    background: whitesmoke;
+    border: none;
+    width: 100%;
+    padding-right: 80px;
+    font-size: 1em;
+    border-radius: 15px;
+    text-indent: 5%;
+  }
+   
+  .new-response input:focus{
     outline: 0;
   }
    
@@ -134,14 +155,18 @@ body {
   }
 
   .submit-button {
-    background-color: #5171d8 ; /* Green */
+    background-color: #5171d8 ; 
     border: none;
     color: rgb(255, 255, 255);
     padding: 5px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
+    -webkit-user-drag: auto;
     font-size: 16px;
+    padding-top: 10px;
+    border-radius: 6px;
+
 }
 .incidence{
     -webkit-transition-duration: 0.4s; /* Safari */

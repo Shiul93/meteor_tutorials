@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Tickets } from '../api/tickets.js';
 import { Meteor } from 'meteor/meteor';
+import ReactDOM from 'react-dom';
+
 
 
 // Task component - represents a single todo item
@@ -15,6 +17,7 @@ export default class Ticket extends Component {
       }
     deleteThisTicket() {
         Meteor.call("tickets.remove",this.props.ticket._id);
+        
     }
 
     toggleResponse() {
@@ -41,7 +44,8 @@ export default class Ticket extends Component {
 
     handleSubmit(){
         const response = ReactDOM.findDOMNode(this.refs.textInputResponse).value.trim();
-        Meteor.call('tickets.addResponse',this.props.ticket._id, response);
+        rep = new Response();
+        Meteor.call('tickets.addResponse',this.props.ticket._id,rep );
     }
 
     
@@ -62,7 +66,7 @@ export default class Ticket extends Component {
                 <input
                   type="text"
                   ref="textInputResponse"
-                  placeholder="Response"
+                  placeholder="Add Response"
                 />
                 <br></br>          
    

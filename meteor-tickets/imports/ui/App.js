@@ -54,12 +54,11 @@ class App extends Component {
         <div className="ticketForm">
           <form className="new-ticket" onSubmit={this.handleSubmit.bind(this)} >
           
-              <input
+              <input 
                 type="text"
                 ref="textInputName"
                 placeholder="Name of the incidence"
               />
-              <br></br>
               <input
                 type="text"
                 ref="textInputDescription"
