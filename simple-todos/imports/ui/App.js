@@ -4,7 +4,6 @@ import { Meteor } from 'meteor/meteor';
 
 import { Tasks } from '../api/tasks.js';
 import ReactDOM from 'react-dom';
-
 import Task from './Task.js';
 import AccountsUIWrapper from './AccountsUIWrapper.js';
 
