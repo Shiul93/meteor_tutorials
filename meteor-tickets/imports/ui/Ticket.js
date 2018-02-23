@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Tickets } from '../api/tickets.js';
 import { Meteor } from 'meteor/meteor';
 import ReactDOM from 'react-dom';
+import Response from './Response.js';
 
 
 
@@ -44,11 +45,31 @@ export default class Ticket extends Component {
 
     handleSubmit(){
         const response = ReactDOM.findDOMNode(this.refs.textInputResponse).value.trim();
-        rep = new Response();
+        const id = Meteor.userId();
+        rep = this.createResponse(id, response);
+        console.log(rep);
         Meteor.call('tickets.addResponse',this.props.ticket._id,rep );
     }
 
-    
+    createResponse(own, txt){
+        console.log(this.props.ticket.responses.length);
+        key = this.props.ticket.responses.length
+        resp = {};
+        resp["key"]=key;
+        resp["owner"]=own;
+        resp["text"]=txt;
+
+
+        return (resp);
+    }
+
+  renderResponse(){
+      return (
+      //<Response owner={this.props.ticket.responses[0].owner} text={this.ticket.props.responses[0].text}/>
+        <Response owner="AAAAAAA" text="AAAAAAAA"/>
+
+    ); 
+  }  
     
   render() {
     return (
@@ -58,6 +79,12 @@ export default class Ticket extends Component {
             &times;
             </button>
             <strong>{this.props.ticket.username} >>> {this.props.ticket.name}:</strong>
+            
+            {this.props.ticket.responses ?
+            <div>
+                {this.renderResponse()}
+                </div>: ''
+                }
             <p>Description: <br></br> {this.props.ticket.description}</p>
             {this.state.showResponse && 
             <div className="responseForm">
