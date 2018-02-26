@@ -44,6 +44,7 @@ export default class Ticket extends Component {
     }
 
     handleSubmit(event){
+        //Previene la recarga de la pagina
         event.preventDefault();
 
         const response = ReactDOM.findDOMNode(this.refs.textInputResponse).value.trim();

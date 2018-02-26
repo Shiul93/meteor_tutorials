@@ -17,7 +17,14 @@ import { Tickets } from '../api/tickets.js';
  
 // App component - represents the whole app
 class App extends Component {
-  
+  constructor(props) {
+    super(props);
+ 
+    this.state = {
+        showResponse: undefined,
+      };
+
+  }
  
   renderTickets() {
     return this.props.tickets.map((ticket) => (
@@ -43,6 +50,25 @@ class App extends Component {
 
   }
 
+  takePhoto(){
+    var cameraOptions = {
+      width: 800,
+      height: 600
+    };
+    var photo;
+    MeteorCamera.getPicture(cameraOptions,  (error, data)=> {
+
+      this.onPhoto(data);
+    });
+  }
+
+  onPhoto(data){
+    this.setState({
+      photo:data,
+    }
+    )
+  }
+
   render() {
     return (
       <div className="container">
@@ -54,7 +80,7 @@ class App extends Component {
         <div className="ticketForm">
           <form className="new-ticket" onSubmit={this.handleSubmit.bind(this)} >
           
-              <input 
+              <input  
                 type="text"
                 ref="textInputName"
                 placeholder="Name of the incidence"
@@ -64,8 +90,13 @@ class App extends Component {
                 ref="textInputDescription"
                 placeholder="Description of the incidence"
               />
+              {this.state.photo ?
+                <img src={this.state.photo} />: ""
+              }
               <button type = "submit" className = "submit-button">
                 Submit 
+              </button> <button type = "button" className = "submit-button" onClick={this.takePhoto.bind(this)}>
+                Photo
               </button>           
 
           </form>
