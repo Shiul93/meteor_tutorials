@@ -8,12 +8,13 @@ export default class Response extends Component{
         this.state = { 
             owner: props.owner,
             text: props.text,
+            username: props.username
 
          }
     }
     render(){
         return(
-            <p> <strong>{this.owner}</strong> : {this.text} </p>
+            <p> <strong>{this.state.username}</strong> : {this.state.text} </p>
         );
     }
 }

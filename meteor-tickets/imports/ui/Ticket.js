@@ -43,32 +43,38 @@ export default class Ticket extends Component {
 
     }
 
-    handleSubmit(){
+    handleSubmit(event){
+        event.preventDefault();
+
         const response = ReactDOM.findDOMNode(this.refs.textInputResponse).value.trim();
         const id = Meteor.userId();
         rep = this.createResponse(id, response);
         console.log(rep);
         Meteor.call('tickets.addResponse',this.props.ticket._id,rep );
+        ReactDOM.findDOMNode(this.refs.textInputResponse).value = '';
+
     }
 
     createResponse(own, txt){
         console.log(this.props.ticket.responses.length);
         key = this.props.ticket.responses.length
+        console.log(Meteor.users.findOne(this.userId));
         resp = {};
         resp["key"]=key;
         resp["owner"]=own;
         resp["text"]=txt;
+        resp["username"]= Meteor.users.findOne(own).username;
+
 
 
         return (resp);
     }
 
   renderResponse(){
-      return (
-      //<Response owner={this.props.ticket.responses[0].owner} text={this.ticket.props.responses[0].text}/>
-        <Response owner="AAAAAAA" text="AAAAAAAA"/>
 
-    ); 
+    return this.props.ticket.responses.map((response) => (
+        <Response key={response.key} username={response.username} owner={response.owner} text={response.text}/>
+      ));
   }  
     
   render() {
@@ -80,12 +86,15 @@ export default class Ticket extends Component {
             </button>
             <strong>{this.props.ticket.username} >>> {this.props.ticket.name}:</strong>
             
-            {this.props.ticket.responses ?
+            
+            
+            <p>Description: <br></br> {this.props.ticket.description}</p>
+            <br></br>
+            { this.props.ticket.responses.length > 0?
             <div>
                 {this.renderResponse()}
-                </div>: ''
-                }
-            <p>Description: <br></br> {this.props.ticket.description}</p>
+            </div>:""
+            }
             {this.state.showResponse && 
             <div className="responseForm">
             <form className="new-response" onSubmit={this.handleSubmit.bind(this)} >
