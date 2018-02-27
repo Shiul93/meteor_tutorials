@@ -14,13 +14,56 @@ body {
     margin: 0;
    
     font-size: 14px;
+    border-radius: 9px;
+
   }
    
+  img {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+
+    border-radius: 9px;
+
+    max-width: 50%;
+    max-height: 50%;
+    
+}
+img:hover {
+  max-width: 95%;
+  max-height: 95%;
+}
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+input[type=text] {
+  width: 90%;
+  padding: 20px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+.portrait {
+    height: 80px;
+    width: 30px;
+}
+
+.landscape {
+    height: 30px;
+    width: 80px;
+}
+
+.square {
+    height: 75px;
+    width: 75px;
+}
   .container {
     max-width: 600px;
     margin: 0 auto;
     min-height: 100%;
     background: white;
+    border-radius: 9px;
+
   }
    
   header {
@@ -28,6 +71,9 @@ body {
     background-image:  #cecece;
     padding: 20px 15px 15px 15px;
     position: relative;
+    border-radius: 9px;
+
+
   }
    
   #login-buttons {
@@ -53,7 +99,19 @@ body {
     margin-top: 10px;
     margin-bottom: -10px;
     position: relative;
+    border-radius: 9px;
+
   }
+
+
+  .dropzone { border: 0px ; 
+    border-radius: 9px; 
+    background: white; 
+    padding: 10px 0;
+  }
+  .dropzone .dz-message { font-weight: 400; }
+  .dropzone .dz-message .note { font-size: 0.8em; font-weight: 200; display: block; margin-top: 1.4rem; }
+  
    
   .new-ticket input {
     box-sizing: border-box;
@@ -63,11 +121,22 @@ body {
     padding: 10px 0;
     background: whitesmoke;
     border: none;
-    width: 100%;
+    width: 95%;
     padding-right: 80px;
     font-size: 1em;
     border-radius: 15px;
     text-indent: 5%;
+    position: relative;
+  }
+
+  .ticketForm{
+    border-radius: 9px;
+
+  }
+
+  .ticketTextBox{
+    padding-bottom: 10px;
+
   }
    
   .new-ticket input:focus{
@@ -75,6 +144,8 @@ body {
   }
 
   .new-response input {
+    -webkit-transition-duration: 0.8s; /* Safari */
+    transition-duration: 0.8s;
     box-sizing: border-box;
     padding: 10px 0;
     background: whitesmoke;
@@ -165,7 +236,9 @@ body {
     -webkit-user-drag: auto;
     font-size: 16px;
     padding-top: 10px;
-    border-radius: 6px;
+    padding-bottom: 10px;
+
+    border-radius: 9px;
 
 }
 .incidence{

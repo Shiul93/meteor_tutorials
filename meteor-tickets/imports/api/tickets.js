@@ -27,9 +27,10 @@ if (Meteor.isServer) {
   }
 
 Meteor.methods({
-    'tickets.insert'(name, description) {
+    'tickets.insert'(name, description,image) {
       check(name, String);
       check(description, String);
+      check(image,String);
 
    
       // Make sure the user is logged in before inserting a task
@@ -44,6 +45,7 @@ Meteor.methods({
         owner: this.userId,
         username: Meteor.users.findOne(this.userId).username,
         responses: [],
+        photo: image,
       });
     },
     'tickets.remove'(ticketId) {

@@ -16,6 +16,9 @@ export default class Ticket extends Component {
           };
 
       }
+
+
+     
     deleteThisTicket() {
         Meteor.call("tickets.remove",this.props.ticket._id);
         
@@ -90,6 +93,12 @@ export default class Ticket extends Component {
             
             
             <p>Description: <br></br> {this.props.ticket.description}</p>
+
+            {this.props.ticket.photo != ""?
+                <div align="center">
+                    <img src={this.props.ticket.photo} />
+                </div>: ""
+              }
             <br></br>
             { this.props.ticket.responses.length > 0?
             <div>
