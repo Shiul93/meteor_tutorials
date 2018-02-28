@@ -118,10 +118,11 @@ class App extends Component {
               <button type = "submit" className = "submit-button">
               
                 Submit 
-              </button>          
+              </button>   
               
           </form>
-         
+          <br></br>       
+
           
 
         </div>: ''
